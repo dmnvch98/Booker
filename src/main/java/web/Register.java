@@ -40,5 +40,16 @@ public class Register extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        User user = new User();
+        user.setName("Sashka");
+        user.setPassword("1234");
+        user.setPhone("23984234");
+        user.setUsername("kakashka");
+        Dao<User> userDao = new UserDao();
+        userDao.save(user);
+    }
+
 }
 
