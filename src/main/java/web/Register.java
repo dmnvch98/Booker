@@ -33,22 +33,10 @@ public class Register extends HttpServlet {
             User user = userService.registerUser(username, password, name, phone);
             Dao<User> userDao = new UserDao();
             userDao.save(user);
-            userService.addUserToDB(user);
             req.setAttribute("user", user);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("registration_2.jsp");
             requestDispatcher.forward(req, resp);
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        User user = new User();
-        user.setName("Sashka");
-        user.setPassword("1234");
-        user.setPhone("23984234");
-        user.setUsername("kakashka");
-        Dao<User> userDao = new UserDao();
-        userDao.save(user);
     }
 
 }
