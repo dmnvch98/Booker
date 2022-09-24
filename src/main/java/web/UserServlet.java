@@ -5,6 +5,7 @@ import dao.UserDao;
 import model.User;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -63,6 +64,8 @@ public class UserServlet extends HttpServlet {
     private void listUser(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException, ServletException {
         List <User> listUser = userDao.getAll();
+//        PrintWriter out = response.getWriter();
+//        out.println(listUser.toString());
         request.setAttribute("listUser", listUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
         dispatcher.forward(request, response);
