@@ -11,13 +11,8 @@
 <%
     User user = (User) request.getAttribute("user");
 %>
-
-<h1>User Record</h1>
-<div>username: <%= user.getUsername() %>
-</div>
-<div>name: <%= user.getName()%>
-</div>
-<div>phone <%= user.getPhone() %>
+<div class="greeting">
+    <h3><%= "Hello " + user.getName() %></h3>
 </div>
 </body>
 </html>

@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "register", value = "/register")
-public class Register extends HttpServlet {
+@WebServlet(name = "signup", value = "/signup")
+public class SignUp extends HttpServlet {
     UserService userService = new UserService();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,7 +25,7 @@ public class Register extends HttpServlet {
         if(username.isEmpty() || name.isEmpty() ||
                 password.isEmpty() || phone.isEmpty())
         {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("registration.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("signup.jsp");
             requestDispatcher.include(req, resp);
         }
         else
@@ -34,7 +34,7 @@ public class Register extends HttpServlet {
             Dao<User> userDao = new UserDao();
             userDao.save(user);
             req.setAttribute("user", user);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("registration_2.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("welcome.jsp");
             requestDispatcher.forward(req, resp);
         }
     }

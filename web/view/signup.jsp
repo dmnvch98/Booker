@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Guru Register Form</h1>
-<form action="register" method="post">
+<form action="signup" method="post">
     <table style="with: 50%">
         <tr>
             <td>name</td>
