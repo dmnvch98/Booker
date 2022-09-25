@@ -17,10 +17,17 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
-    @Column(name = "phone")
-    private String phone;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "role")
+    private UserRole role;
+
+    public User(String username, String password, UserRole role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User() {
+    }
 
     public int getId() {
         return id;
@@ -46,20 +53,12 @@ public class User {
         this.password = password;
     }
 
-    public String getPhone() {
-        return phone;
+    public UserRole getRole() {
+        return role;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     @Override
@@ -67,8 +66,6 @@ public class User {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", name='" + name + '\'' +
                 '}';
     }
 }
