@@ -21,6 +21,10 @@ public class Room {
     @Column(name = "capacity")
     private int capacity;
 
+    public int getId() {
+        return id;
+    }
+
     public RoomType getType() {
         return type;
     }

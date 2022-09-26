@@ -1,7 +1,5 @@
 package filter;
 
-import model.UserRole;
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,15 +27,15 @@ public class AuthFilter implements Filter {
         final HttpServletResponse res = (HttpServletResponse) response;
 
         final HttpSession session = req.getSession();
-
+        System.out.println("In filter");
         //Logged user.
         if (nonNull(session.getAttribute("username")) &&
                 nonNull(session.getAttribute("password"))
-        && nonNull(session.getAttribute("role"))) {
+                && nonNull(session.getAttribute("role"))) {
             moveToWelcomePage(req, res);
         } else {
             //req.getRequestDispatcher("signin.jsp").forward(req, res);
-              res.sendRedirect("signin.jsp");
+            res.sendRedirect("signin.jsp");
         }
     }
 
@@ -50,7 +48,7 @@ public class AuthFilter implements Filter {
                                    final HttpServletResponse res)
             throws ServletException, IOException {
         //req.getRequestDispatcher("welcome.jsp").forward(req, res);
-        res.sendRedirect("welcome.jsp");
+        res.sendRedirect("/welcome.jsp");
     }
 
 

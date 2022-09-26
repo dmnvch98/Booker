@@ -2,6 +2,7 @@ package utils;
 
 import java.util.Properties;
 
+import model.Booking;
 import model.Room;
 import model.User;
 import org.hibernate.SessionFactory;
@@ -22,7 +23,7 @@ public class HibernateUtil {
                 settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
                 settings.put(Environment.URL, "jdbc:mysql://localhost:3306/lab4?useSSL=false");
                 settings.put(Environment.USER, "root");
-                settings.put(Environment.PASS, "root1234");
+                settings.put(Environment.PASS, "root");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 settings.put(Environment.HBM2DDL_AUTO, "update");
                 settings.put(Environment.SHOW_SQL, "true");
@@ -31,6 +32,7 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
                 configuration.addAnnotatedClass(Room.class);
+                configuration.addAnnotatedClass(Booking.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

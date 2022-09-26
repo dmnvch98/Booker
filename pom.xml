@@ -76,6 +76,7 @@
                             <directory>web/view</directory>
                         </resource>
                     </webResources>
+                    <failOnMissingWebXml>true</failOnMissingWebXml>
                 </configuration>
             </plugin>
         </plugins>

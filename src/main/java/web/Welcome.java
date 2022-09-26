@@ -10,11 +10,11 @@ import java.io.IOException;
 @WebServlet(name = "welcome", value = "/welcome")
 public class Welcome extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (req.getSession().getAttribute("name") != null) {
             resp.sendRedirect("/welcome.jsp");
         } else {
-            resp.sendRedirect("/signup.jsp");
+            resp.sendRedirect("/signin.jsp");
         }
     }
 }

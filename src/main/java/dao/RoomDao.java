@@ -12,7 +12,12 @@ public class RoomDao implements Dao<Room> {
     List<Room> listOfRooms;
     @Override
     public void save(Room value) {
-
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(value);
+            transaction.commit();
+        }
     }
 
     @Override

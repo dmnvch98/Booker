@@ -48,7 +48,12 @@ public class UserDao implements Dao<User> {
 
     @Override
     public User get(int id) {
-        return new User();
+        for (User user : listOfUser) {
+            if (user.getId() == id) {
+                return user;
+            }
+        }
+        return null;
     }
     public boolean userIsExist(final String username, final String password) {
         for (User user : listOfUser) {

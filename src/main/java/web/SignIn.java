@@ -26,6 +26,7 @@ public class SignIn extends HttpServlet {
             httpSession.setAttribute("username", username);
             httpSession.setAttribute("role", role);
             httpSession.setAttribute("password", password);
+            httpSession.setAttribute("user_id", userDao.getUserByLoginPassword(username, password).getId());
             resp.sendRedirect("/welcome.jsp");
         } else {
             resp.sendRedirect("/signin.jsp");
