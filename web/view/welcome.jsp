@@ -25,5 +25,10 @@
             <input type="submit" value="Add Booking" class="btn btn-big"/>
         </form>
     </div>
+    <div>
+        <form action="/user-bookings">
+            <input type="submit" value="View My Bookings" class="btn btn-big"/>
+        </form>
+    </div>
 </body>
 </html>

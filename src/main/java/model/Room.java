@@ -57,14 +57,12 @@ public class Room {
         this.capacity = capacity;
     }
 
+
     @Override
     public String toString() {
-        return "Room{" +
-                "id=" + id +
-                ", type=" + type +
+        return "type=" + type +
                 ", floor=" + floor +
                 ", number=" + number +
-                ", capacity=" + capacity +
-                '}';
+                ", capacity=" + capacity;
     }
 }

@@ -18,15 +18,17 @@ import java.util.List;
 @WebServlet(name = "add-booking", value = "/add-booking")
 public class AddBooking extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         Booking booking = new Booking();
         UserDao userDao = new UserDao();
         BookingDao bookingDao = new BookingDao();
+        RoomDao roomDao = new RoomDao();
 
         Integer userId = (Integer) req.getSession().getAttribute("user_id");
         String startDate = req.getParameter("start_date");
         String endDate = req.getParameter("end_date");
-        Room room = (Room) req.getSession().getAttribute("room");
+        String roomId = (String) req.getSession().getAttribute("roomId");
+        Room room = roomDao.get(Integer.parseInt(roomId));
 
         booking.setUser(userDao.get(userId));
         booking.setStartDate(LocalDate.parse(startDate));
@@ -40,7 +42,7 @@ public class AddBooking extends HttpServlet {
         RoomDao roomDao = new RoomDao();
         List<Room> roomList = roomDao.getAll();
         req.setAttribute("rooms", roomList);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/addBooking.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/select-room.jsp");
         dispatcher.forward(req, resp);
     }
 }

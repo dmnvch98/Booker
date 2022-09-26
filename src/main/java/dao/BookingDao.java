@@ -1,13 +1,22 @@
 package dao;
 
 import model.Booking;
+import model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingDao implements Dao<Booking> {
+    List<Booking> bookingList;
+
+    public BookingDao() {
+        this.bookingList = getAll();
+        System.out.println();
+    }
+
     @Override
     public void save(Booking value) {
         Transaction transaction = null;
@@ -35,6 +44,33 @@ public class BookingDao implements Dao<Booking> {
 
     @Override
     public List<Booking> getAll() {
-        return null;
+        Transaction transaction = null;
+        List <Booking> bookingList = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            bookingList = session.createQuery("from Booking").getResultList();
+
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return bookingList;
+    }
+
+    public List<Booking> getUserBookings(User user) {
+        List<Booking> userBookings = new ArrayList<>();
+        for (Booking booking: bookingList) {
+            if (booking.getUser().getId() == user.getId()) {
+                userBookings.add(booking);
+            }
+        }
+        return userBookings;
     }
 }

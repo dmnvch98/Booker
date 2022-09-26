@@ -9,6 +9,10 @@ import utils.HibernateUtil;
 import java.util.List;
 
 public class RoomDao implements Dao<Room> {
+    public RoomDao() {
+        this.listOfRooms = getAll();
+    }
+
     List<Room> listOfRooms;
     @Override
     public void save(Room value) {
@@ -32,6 +36,11 @@ public class RoomDao implements Dao<Room> {
 
     @Override
     public Room get(int id) {
+        for (Room room : listOfRooms) {
+            if (room.getId() == id) {
+                return room;
+            }
+        }
         return null;
     }
 
