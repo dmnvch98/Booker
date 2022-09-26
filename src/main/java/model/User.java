@@ -5,11 +5,10 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@NamedQuery(name = "AllUsers", query = "SELECT u FROM User u")
 @Table(name = "users")
 public class User {
     @Id
-    @Column(name = "user_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GenericGenerator(name="increment", strategy = "increment")
     private int id;

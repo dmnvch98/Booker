@@ -20,13 +20,10 @@ public class SignUp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
-        String name = req.getParameter("name");
         String password = req.getParameter("password");
-        String phone = req.getParameter("phone");
         UserRole role = UserRole.valueOf(req.getParameter("role"));
 
-        if(username.isEmpty() || name.isEmpty() ||
-                password.isEmpty() || phone.isEmpty())
+        if(username.isEmpty() || password.isEmpty())
         {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("signup.jsp");
             requestDispatcher.include(req, resp);

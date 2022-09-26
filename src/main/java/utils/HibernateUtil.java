@@ -2,6 +2,7 @@ package utils;
 
 import java.util.Properties;
 
+import model.Room;
 import model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -29,6 +30,7 @@ public class HibernateUtil {
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
+                configuration.addAnnotatedClass(Room.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

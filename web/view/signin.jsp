@@ -1,27 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Yauhen
-  Date: 25.09.22
-  Time: 14:43
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<form action="signin" method="post">
-    <table style="with: 50%">
-        <tr>
-            <td>username</td>
-            <td><input type="text" name="username"/></td>
-        </tr>
-        <tr>
-            <td>password</td>
-            <td><input type="password" name="password"/></td>
-        </tr>
-    </table>
-    <input type="submit" value="Submit"/></form>
+<%--<form action="signin" method="post">--%>
+<style><%@include file="styles/signin-style.css"%></style>
+    <form method="post" action="/signin">
+        <div class="box">
+            <h1>Dashboard</h1>
+
+            <input type="username" name="username" placeholder="username" class="username" />
+
+            <input type="password" name="password" placeholder="password" class="password"/>
+            <input type="submit" value="Submit" class="btn"/>
+            <a href="/signup"><div id="btn2">Sign Up</div></a>
+        </div>
+    </form>
 </body>
 </html>
