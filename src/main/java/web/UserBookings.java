@@ -18,6 +18,7 @@ import java.util.List;
 public class UserBookings extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("Now in user bookings");
         BookingDao bookingDao = new BookingDao();
         Integer userId = (Integer) req.getSession().getAttribute("user_id");
         User user = new UserDao().get(userId);
@@ -25,5 +26,10 @@ public class UserBookings extends HttpServlet {
         req.setAttribute("userBookings",userBookings);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/user-bookings.jsp");
         requestDispatcher.include(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

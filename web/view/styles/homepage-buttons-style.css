@@ -1,0 +1,27 @@
+.btn{
+    padding: 20px;
+    display: inline-block;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.btns{
+    text-align: center;
+}
+#btn1, #btn2{
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius:4px;
+    font-weight:800;
+    font-size:0.8em;
+}
+#btn1{
+    background:#2ecc71;
+}
+#btn2{
+    background:#3498db;
+}

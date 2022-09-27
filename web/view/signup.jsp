@@ -24,31 +24,5 @@
         <a href="/signin"><div id="btn2">Sign In</div></a>
     </div>
 </form>
-<%--<form action="signup" method="post">--%>
-<%--    <table style="with: 50%">--%>
-<%--        <tr>--%>
-<%--            <td>name</td>--%>
-<%--            <td><input class="input-text" type="text" name="name"/></td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>username</td>--%>
-<%--            <td><input class="input-text" type="text" name="username"/></td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>password</td>--%>
-<%--            <td><input class="input-text" type="password" name="password"/></td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>phone</td>--%>
-<%--            <td><input class="input-text" type="text" name="phone"/></td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>role</td>--%>
-<%--            <td><input type="radio" name="role" value="ADMIN" checked="checked"/>admin</td>--%>
-<%--            <td><input type="radio" name="role" value="USER" />user</td>--%>
-<%--        </tr>--%>
-<%--    </table>--%>
-<%--    <input type="submit" value="Submit"/>--%>
-<%--</form>--%>
 </body>
 </html>

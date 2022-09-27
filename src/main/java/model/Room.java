@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
+@NamedQuery(name = "selectBooksByDates", query = "select r from Room r join Booking b on r = b.room where :startDate <= b.endDate and :endDate <= b.startDate")
 @Table(name = "room")
 public class Room {
     @Id

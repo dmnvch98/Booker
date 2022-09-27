@@ -25,6 +25,14 @@ public class Booking {
     @ManyToOne
     private Room room;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public User getUser() {
         return user;
     }

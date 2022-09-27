@@ -11,8 +11,9 @@ import java.io.IOException;
 public class Welcome extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("Now in welcome page");
         if (req.getSession().getAttribute("name") != null) {
-            resp.sendRedirect("/welcome.jsp");
+            resp.sendRedirect("/home.jsp");
         } else {
             resp.sendRedirect("/signin.jsp");
         }

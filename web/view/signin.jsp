@@ -4,7 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-<%--<form action="signin" method="post">--%>
 <style><%@include file="styles/signin-style.css"%></style>
     <form method="post" action="/signin">
         <div class="box">

@@ -29,10 +29,7 @@ public class AuthFilter implements Filter {
         final HttpSession session = req.getSession();
         System.out.println("In filter");
         //Logged user.
-        session.setAttribute("username", "admin");
-        session.setAttribute("password", "admin");
-        session.setAttribute("role", "ADMIN");
-        session.setAttribute("user_id", 1);
+
         if (nonNull(session.getAttribute("username")) &&
                 nonNull(session.getAttribute("password"))
                 && nonNull(session.getAttribute("role"))) {
@@ -51,8 +48,8 @@ public class AuthFilter implements Filter {
     private void moveToWelcomePage(final HttpServletRequest req,
                                    final HttpServletResponse res)
             throws ServletException, IOException {
-        //req.getRequestDispatcher("welcome.jsp").forward(req, res);
-        res.sendRedirect("/welcome.jsp");
+        //req.getRequestDispatcher("home.jsp").forward(req, res);
+        res.sendRedirect("/home.jsp");
     }
 
 

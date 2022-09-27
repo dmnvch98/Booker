@@ -1,6 +1,6 @@
+<%@ page import="java.time.LocalDate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
 <head>
@@ -8,13 +8,12 @@
     <style><%@include file="styles/select-room-style.css"%></style>
 </head>
 <body>
-<div style="text-align: center;">
-    <h1>Booking Management</h1>
-</div>
+<%@ include file="header.jsp" %>
 <div style="text-align: center;">
     <table >
-        <caption><h2>List of Rooms</h2></caption>
+        <caption><h2>List of available rooms</h2></caption>
         <tr>
+            <th>id</th>
             <th>Room number</th>
             <th>Capacity</th>
             <th>Type</th>
@@ -22,12 +21,13 @@
         </tr>
         <c:forEach var="room" items="${rooms}">
             <tr>
+                <td><c:out value="${room.id}" /></td>
                 <td><c:out value="${room.number}" /></td>
                 <td><c:out value="${room.capacity}" /></td>
                 <td><c:out value="${room.type}" /></td>
                 <td><c:out value="${room.floor}" /></td>
                 <td>
-                    <a href="select-dates.jsp?id=<c:out value='${room.id}' />">Select</a>
+                    <a href="/add-booking?id=<c:out value='${room.id}' />">Select</a>
                 </td>
             </tr>
         </c:forEach>
