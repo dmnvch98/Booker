@@ -22,14 +22,19 @@ public class SignIn extends HttpServlet {
         UserDao userDao = new UserDao();
         if (userDao.userIsExist(username, password)) {
             UserRole role = userDao.getRoleByLoginPassword(username, password);
-            HttpSession httpSession = req.getSession();
-            httpSession.setAttribute("username", username);
-            httpSession.setAttribute("role", role);
-            httpSession.setAttribute("password", password);
-            httpSession.setAttribute("user_id", userDao.getUserByLoginPassword(username, password).getId());
+            setSessionAttributes(req, resp, username, password, userDao, role);
             resp.sendRedirect("/home.jsp");
         } else {
             resp.sendRedirect("/signin.jsp");
         }
+    }
+
+    static void setSessionAttributes(HttpServletRequest req, HttpServletResponse resp, String username, String password,
+                                     UserDao userDao, UserRole role) throws IOException {
+        HttpSession httpSession = req.getSession();
+        httpSession.setAttribute("username", username);
+        httpSession.setAttribute("role", role);
+        httpSession.setAttribute("password", password);
+        httpSession.setAttribute("user_id", userDao.getUserByLoginPassword(username, password).getId());
     }
 }

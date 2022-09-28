@@ -8,9 +8,6 @@ import java.io.IOException;
 
 import static java.util.Objects.nonNull;
 
-/**
- * Acidification filter.
- */
 public class AuthFilter implements Filter {
 
     @Override
@@ -18,43 +15,26 @@ public class AuthFilter implements Filter {
     }
 
     @Override
-    public void doFilter(final ServletRequest request,
-                         final ServletResponse response,
-                         final FilterChain filterChain)
-
-            throws IOException, ServletException {
+    public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain filterChain)
+            throws IOException {
         final HttpServletRequest req = (HttpServletRequest) request;
         final HttpServletResponse res = (HttpServletResponse) response;
 
         final HttpSession session = req.getSession();
         System.out.println("In filter");
-        //Logged user.
 
         if (nonNull(session.getAttribute("username")) &&
                 nonNull(session.getAttribute("password"))
                 && nonNull(session.getAttribute("role"))) {
-            moveToWelcomePage(req, res);
+            moveToHomePage(req, res);
         } else {
-            //req.getRequestDispatcher("signin.jsp").forward(req, res);
             res.sendRedirect("signin.jsp");
         }
     }
 
-    /**
-     * Move user to menu.
-     * If access 'admin' move to admin menu.
-     * If access 'user' move to user menu.
-     */
-    private void moveToWelcomePage(final HttpServletRequest req,
-                                   final HttpServletResponse res)
-            throws ServletException, IOException {
-        //req.getRequestDispatcher("home.jsp").forward(req, res);
+    private void moveToHomePage(final HttpServletRequest req,
+                                final HttpServletResponse res)
+            throws IOException {
         res.sendRedirect("/home.jsp");
     }
-
-
-    @Override
-    public void destroy() {
-    }
-
 }

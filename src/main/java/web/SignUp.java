@@ -33,11 +33,7 @@ public class SignUp extends HttpServlet {
             UserDao userDao = new UserDao();
             User user = new User(username, password, role);
             userDao.save(user);
-            HttpSession httpSession = req.getSession();
-            httpSession.setAttribute("username", username);
-            httpSession.setAttribute("role", role);
-            httpSession.setAttribute("password", password);
-            httpSession.setAttribute("user_id", userDao.getUserByLoginPassword(username, password).getId());
+            SignIn.setSessionAttributes(req, resp, username, password, userDao, role);
             resp.sendRedirect("/home.jsp");
         }
     }

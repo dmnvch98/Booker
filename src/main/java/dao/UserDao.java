@@ -7,7 +7,6 @@ import utils.HibernateUtil;
 
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao implements Dao<User> {

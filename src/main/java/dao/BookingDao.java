@@ -1,13 +1,11 @@
 package dao;
 
 import model.Booking;
-import model.Room;
 import model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateUtil;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class BookingDao implements Dao<Booking> {
 
     @Override
     public void save(Booking value) {
-        Transaction transaction = null;
+        Transaction transaction;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             session.save(value);
