@@ -25,7 +25,7 @@ public class AvailableRooms extends HttpServlet {
         RoomDao roomDao = new RoomDao();
         List<Room> availableRooms = roomDao.filterRoomsByDates(startDate, endDate);
         req.setAttribute("rooms", availableRooms);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/select-room.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/view/select-room.jsp");
         dispatcher.forward(req, resp);
     }
 }

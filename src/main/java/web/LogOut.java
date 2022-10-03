@@ -18,6 +18,6 @@ public class LogOut extends HttpServlet {
         session.removeAttribute("login");
         session.removeAttribute("role");
 
-        resp.sendRedirect("/signin.jsp");
+        resp.sendRedirect("/view/signin.jsp");
     }
 }

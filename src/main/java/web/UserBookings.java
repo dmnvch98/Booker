@@ -24,7 +24,7 @@ public class UserBookings extends HttpServlet {
         User user = new UserDao().get(userId);
         List<Booking> userBookings = bookingDao.getUserBookings(user);
         req.setAttribute("userBookings",userBookings);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/user-bookings.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/user-bookings.jsp");
         requestDispatcher.include(req, resp);
     }
 

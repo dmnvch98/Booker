@@ -12,7 +12,7 @@ import java.io.IOException;
 public class SignIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/signin.jsp");
+        resp.sendRedirect("/view/signin.jsp");
     }
 
     @Override
@@ -23,9 +23,9 @@ public class SignIn extends HttpServlet {
         if (userDao.userIsExist(username, password)) {
             UserRole role = userDao.getRoleByLoginPassword(username, password);
             setSessionAttributes(req, resp, username, password, userDao, role);
-            resp.sendRedirect("/home.jsp");
+            resp.sendRedirect("/view/home.jsp");
         } else {
-            resp.sendRedirect("/signin.jsp");
+            resp.sendRedirect("/view/signin.jsp");
         }
     }
 
