@@ -1,40 +1,30 @@
 package web;
-import dao.Dao;
-import dao.UserDao;
-import model.User;
 import model.UserRole;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "signup", value = "/signup")
-public class SignUp extends HttpServlet {
+public class SignUp extends AbstractUserServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/view/signup.jsp");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.sendRedirect("/new-view/sign-up.jsp");
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        UserRole role = UserRole.valueOf(req.getParameter("role"));
-
-        if(username.isEmpty() || password.isEmpty())
-        {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/signup.jsp");
-            requestDispatcher.include(req, resp);
-        }
-        else
-        {
-            UserDao userDao = new UserDao();
-            User user = new User(username, password, role);
-            userDao.save(user);
-            SignIn.setSessionAttributes(req, resp, username, password, userDao, role);
+        UserRole userRole = UserRole.valueOf(req.getParameter("role"));
+        if (!(username.isEmpty() && password.isEmpty() && userRole.toString().isEmpty())) {
+            getUserService().signUp(username, password, userRole);
+            req.getSession().setAttribute("username", username);
+            req.getSession().setAttribute("password", password);
+            req.getSession().setAttribute("role", userRole);
             resp.sendRedirect("/view/home.jsp");
+        } else {
+            resp.sendRedirect("/new-view/sign-up.jsp");
         }
     }
 

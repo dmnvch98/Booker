@@ -27,7 +27,7 @@
                 <td><c:out value="${room.type}" /></td>
                 <td><c:out value="${room.floor}" /></td>
                 <td>
-                    <a href="/add-booking?id=<c:out value='${room.id}' />">Select</a>
+                    <a href="/myapp/add-booking?id=<c:out value='${room.id}' />">Select</a>
                 </td>
             </tr>
         </c:forEach>

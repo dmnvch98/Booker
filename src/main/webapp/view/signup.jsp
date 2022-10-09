@@ -11,7 +11,7 @@
 <style>
     <%@include file="styles/signin-style.css" %>
 </style>
-<form method="post" action="/signup">
+<form method="post" action="${pageContext.request.contextPath}/signup">
     <div class="box">
         <h1>Signup</h1>
         <input type="username" name="username" placeholder="username" class="username"/>
@@ -21,7 +21,7 @@
             <input type="radio" name="role" value="USER" >user
         </div>
         <input type="submit" value="Submit" class="btn signup-btn"/>
-        <a href="/signin"><div id="btn2">Sign In</div></a>
+        <a href="/myapp/signin"><div id="btn2">Sign In</div></a>
     </div>
 </form>
 </body>

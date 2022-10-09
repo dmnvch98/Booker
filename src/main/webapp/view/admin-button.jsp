@@ -13,7 +13,7 @@
 <body>
 <div class="btns">
   <div class="btn">
-    <form action="/manage-bookings" method="post">
+    <form action="/myapp/manage-bookings" method="post">
       <input type="submit" value="Manage User Bookings" class="btn" id="btn2"/>
     </form>
   </div>

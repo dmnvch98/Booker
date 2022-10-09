@@ -8,11 +8,11 @@
 <%--    request.getSession().setAttribute("roomId", roomId);%>--%>
 <body>
 <%@ include file="header.jsp" %>
-<form action="available-rooms" method="post">
+<form action="${pageContext.request.contextPath}/available-rooms" method="post">
     <label for="start">Start date:</label>
 
     <input type="date" id="start" name="start_date">
-    <label for="start">End date:</label>
+    <label for="end">End date:</label>
 
     <input type="date" id="end" name="end_date">
 

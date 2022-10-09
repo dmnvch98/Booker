@@ -1,27 +1,25 @@
 package web;
 
-import dao.BookingDao;
-import dao.RoomDao;
-import dao.UserDao;
+import repository.BookingDao;
+import repository.RoomDao;
+import repository.UserRepository;
 import model.Booking;
 import model.Room;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.List;
+
 @WebServlet(name = "add-booking", value = "/add-booking")
 public class AddBooking extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("Now in add booking");
         Booking booking = new Booking();
-        UserDao userDao = new UserDao();
+        UserRepository userDao = new UserRepository(null);
         BookingDao bookingDao = new BookingDao();
         RoomDao roomDao = new RoomDao();
 
@@ -37,7 +35,7 @@ public class AddBooking extends HttpServlet {
         booking.setRoom(room);
         bookingDao.save(booking);
         req.getSession().setAttribute("bookingAdded", true);
-        resp.sendRedirect("/view/user-bookings");
+        resp.sendRedirect("/myapp/view/user-bookings");
     }
 
     @Override

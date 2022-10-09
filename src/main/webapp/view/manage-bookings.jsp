@@ -25,7 +25,7 @@
                 <td><c:out value="${booking.endDate}"/></td>
                 <td><c:out value="${booking.room}"/></td>
                 <td>
-                    <a href="/manage-bookings?booking-id=<c:out value='${booking.id}' />">Delete</a>
+                    <a href="${pageContext.request.contextPath}/manage-bookings?booking-id=<c:out value='${booking.id}' />">Delete</a>
                 </td>
             </tr>
         </c:forEach>

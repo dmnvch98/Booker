@@ -1,7 +1,7 @@
 package web;
 
-import dao.BookingDao;
-import dao.UserDao;
+import repository.BookingDao;
+import repository.UserRepository;
 import model.Booking;
 import model.User;
 
@@ -21,10 +21,10 @@ public class UserBookings extends HttpServlet {
         System.out.println("Now in user bookings");
         BookingDao bookingDao = new BookingDao();
         Integer userId = (Integer) req.getSession().getAttribute("user_id");
-        User user = new UserDao().get(userId);
+        User user = new UserRepository(null).get(userId);
         List<Booking> userBookings = bookingDao.getUserBookings(user);
         req.setAttribute("userBookings",userBookings);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/user-bookings.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/myapp/view/user-bookings.jsp");
         requestDispatcher.include(req, resp);
     }
 

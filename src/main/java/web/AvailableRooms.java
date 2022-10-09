@@ -1,6 +1,6 @@
 package web;
 
-import dao.RoomDao;
+import repository.RoomDao;
 import model.Room;
 
 import javax.servlet.RequestDispatcher;

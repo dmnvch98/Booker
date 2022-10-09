@@ -8,12 +8,12 @@
 </head>
 <body>
 <div class="header">
-    <a href="/home.jsp" class="logo">Booker</a>
+    <a href="home.jsp" class="logo">Booker</a>
     <div class="header-right">
         <a><%=request.getSession().getAttribute("username")%>
         </a>
         <a class="logout-btn">
-            <form action="/logout">
+            <form action="${pageContext.request.contextPath}/logout">
                 <input type="submit" value="Logout" id="btn"/>
             </form>
         </a>

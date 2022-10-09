@@ -1,32 +1,36 @@
-package dao;
+package repository;
 
 import model.User;
 import model.UserRole;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import utils.HibernateUtil;
 
 import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class UserDao implements Dao<User> {
-    List <User> listOfUser;
+public class UserRepository implements UserDao {
+    private final List<User> listOfUser;
+    private final SessionFactory sessionFactory;
 
-    public UserDao() {
+    public UserRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
         listOfUser = getAll();
-        System.out.println();
     }
 
     @Override
-    public void save(User value) {
-        Transaction transaction = null;
-        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+    public void save(final String username, final String password, final UserRole userRole) {
+        Transaction transaction;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(value);
+            User user = new User(username, password, userRole);
+            session.save(user);
             transaction.commit();
         }
     }
 
+    @Override
     public UserRole getRoleByLoginPassword(final String username, final String password) {
         for (User user : listOfUser) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
@@ -55,6 +59,8 @@ public class UserDao implements Dao<User> {
         }
         return null;
     }
+
+    @Override
     public boolean userIsExist(final String username, final String password) {
         for (User user : listOfUser) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
@@ -63,6 +69,8 @@ public class UserDao implements Dao<User> {
         }
         return false;
     }
+
+    @Override
     public User getUserByLoginPassword(final String username, final String password) {
         User result = new User();
         result.setId(-1);
@@ -75,11 +83,12 @@ public class UserDao implements Dao<User> {
         return result;
     }
 
+    @Override
     @SuppressWarnings("unchecked")
-    public List <User> getAll() {
+    public List<User> getAll() {
         Transaction transaction = null;
-        List <User> listOfUser = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        List<User> listOfUser = null;
+        try (Session session = sessionFactory.openSession()) {
             // start a transaction
             transaction = session.beginTransaction();
             // get an user object

@@ -6,12 +6,12 @@
 <body>
 <div class="btns">
     <div class="btn">
-        <form action="/select-dates.jsp">
+        <form action="/myapp/view/select-dates.jsp">
             <input type="submit" value="Add Booking" class="btn" id="btn1"/>
         </form>
     </div>
     <div class="btn">
-        <form action="/user-bookings">
+        <form action="/myapp/user-bookings">
             <input type="submit" value="View My Bookings" class="btn" id="btn2"/>
         </form>
     </div>

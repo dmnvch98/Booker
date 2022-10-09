@@ -1,6 +1,6 @@
 package web;
 
-import dao.BookingDao;
+import repository.BookingDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

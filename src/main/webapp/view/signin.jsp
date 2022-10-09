@@ -5,7 +5,7 @@
 </head>
 <body>
 <style><%@include file="styles/signin-style.css"%></style>
-    <form method="post" action="/signin">
+    <form method="post" action="/myapp/signin">
         <div class="box">
             <h1>Dashboard</h1>
 
@@ -13,7 +13,7 @@
 
             <input type="password" name="password" placeholder="password" class="password"/>
             <input type="submit" value="Submit" class="btn"/>
-            <a href="/signup"><div id="btn2">Sign Up</div></a>
+            <a href="/myapp/signup"><div id="btn2">Sign Up</div></a>
         </div>
     </form>
 </body>
