@@ -10,7 +10,6 @@
     <packaging>war</packaging>
     <name>demo</name>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>11</maven.compiler.target>
@@ -28,18 +27,6 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.6.1.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -76,15 +63,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <!-- this is relative to the pom.xml directory -->
-                            <directory>web/view</directory>
-                        </resource>
-                    </webResources>
-                    <failOnMissingWebXml>true</failOnMissingWebXml>
-                </configuration>
             </plugin>
         </plugins>
     </build>

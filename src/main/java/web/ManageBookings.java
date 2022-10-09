@@ -36,7 +36,7 @@ public class ManageBookings extends HttpServlet {
 
     public void redirectToManageBookings(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("bookings", bookingDao.getAll());
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/manage-bookings.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/manage-bookings.jsp");
         requestDispatcher.include(req, resp);
     }
 }

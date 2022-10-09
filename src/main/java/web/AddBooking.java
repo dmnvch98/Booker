@@ -37,7 +37,7 @@ public class AddBooking extends HttpServlet {
         booking.setRoom(room);
         bookingDao.save(booking);
         req.getSession().setAttribute("bookingAdded", true);
-        resp.sendRedirect("/user-bookings");
+        resp.sendRedirect("/view/user-bookings");
     }
 
     @Override

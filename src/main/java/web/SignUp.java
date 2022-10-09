@@ -14,7 +14,7 @@ import java.io.IOException;
 public class SignUp extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/signup.jsp");
+        resp.sendRedirect("/view/signup.jsp");
     }
 
     @Override
@@ -25,7 +25,7 @@ public class SignUp extends HttpServlet {
 
         if(username.isEmpty() || password.isEmpty())
         {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("signup.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/signup.jsp");
             requestDispatcher.include(req, resp);
         }
         else
@@ -34,7 +34,7 @@ public class SignUp extends HttpServlet {
             User user = new User(username, password, role);
             userDao.save(user);
             SignIn.setSessionAttributes(req, resp, username, password, userDao, role);
-            resp.sendRedirect("/home.jsp");
+            resp.sendRedirect("/view/home.jsp");
         }
     }
 

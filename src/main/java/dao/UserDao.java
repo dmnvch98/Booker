@@ -13,7 +13,8 @@ public class UserDao implements Dao<User> {
     List <User> listOfUser;
 
     public UserDao() {
-        this.listOfUser = getAll();
+        listOfUser = getAll();
+        System.out.println();
     }
 
     @Override
